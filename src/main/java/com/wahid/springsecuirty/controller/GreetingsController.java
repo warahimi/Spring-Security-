@@ -1,5 +1,6 @@
 package com.wahid.springsecuirty.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,5 +21,18 @@ public class GreetingsController {
     public String sayHelloWorld()
     {
         return "Hello World";
+    }
+
+    @PreAuthorize("hasRole('USER')") // checkes authentication before executing the method
+    @GetMapping("/user")
+    public String sayHelloUser()
+    {
+        return "Hello User";
+    }
+
+    @GetMapping("/admin")
+    public String sayHelloAdmin()
+    {
+        return "Hello Admin";
     }
 }
