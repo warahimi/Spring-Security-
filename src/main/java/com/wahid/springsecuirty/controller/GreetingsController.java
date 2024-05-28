@@ -29,7 +29,7 @@ public class GreetingsController {
     {
         return "Hello User";
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/admin")
     public String sayHelloAdmin()
     {
